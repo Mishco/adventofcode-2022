@@ -9,41 +9,29 @@ B X
 C Z
 """
 
+shapes = {
+    'X': 1,
+    'Y': 2,
+    'Z': 3
+}
 
-def get_shape(word):
-    switch = {
-        'X': 1,
-        'Y': 2,
-        'Z': 3
-    }
-    return switch.get(word, "Invalid value")
-
+scores = {
+    ('A', 'X'): 3,
+    ('A', 'Y'): 6,
+    ('A', 'Z'): 0,
+    ('B', 'X'): 0,
+    ('B', 'Y'): 3,
+    ('B', 'Z'): 6,
+    ('C', 'X'): 6,
+    ('C', 'Y'): 0,
+    ('C', 'Z'): 3
+}
 
 score = 0
 content = open('../inputs/day02.txt', 'r').read()
 for row in content.splitlines():
     first_col, second_col = row.split()[0], row.split()[1]
-    shape = get_shape(second_col)
+    shape = shapes.get(second_col)
+    score += scores.get((first_col, second_col), 0) + shape
 
-    if first_col == 'A' and second_col == 'Y':
-        score += 6 + shape
-    if first_col == 'A' and second_col == 'Z':
-        score += 0 + shape
-    if first_col == 'A' and second_col == 'X':
-        score += 3 + shape
-
-    if first_col == 'B' and second_col == 'X':
-        score += 0 + shape
-    if first_col == 'B' and second_col == 'Y':
-        score += 3 + shape
-    if first_col == 'B' and second_col == 'Z':
-        score += 6 + shape
-
-    if first_col == 'C' and second_col == 'X':
-        score += 6 + shape
-    if first_col == 'C' and second_col == 'Y':
-        score += 0 + shape
-    if first_col == 'C' and second_col == 'Z':
-        score += 3 + shape
-
-print(score) # 11603
+print(score)  # 11603
