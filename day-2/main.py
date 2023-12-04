@@ -13,12 +13,6 @@ shapes = {
     'Y': 2,
     'Z': 3
 }
-# X means you need to lose, Y means you need to end the round in a draw, and Z means you win
-another_shapes = {
-    'X': 0,
-    'Y': 3,
-    'Z': 6
-}
 
 # + outcome of the round (0 if you lost, 3 if the round was a draw, and 6 if you won)
 scores = {
@@ -61,4 +55,4 @@ for one_round in rounds:
     scores.append(points[one_round])
     total += points[one_round]
 
-print(total) # 12725
+print(total)  # 12725
